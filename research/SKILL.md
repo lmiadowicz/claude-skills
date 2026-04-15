@@ -71,7 +71,7 @@ If no flags provided, the orchestrator automatically determines optimal angles a
 
 **Output path resolution (in order of precedence):**
 1. `--output <path>` flag
-2. `$OBSIDIAN_VAULT/raw/Research/` environment variable
+2. `$OBSIDIAN_VAULT/Research/` environment variable
 3. `./research-output/` (current directory fallback, same as `--no-obsidian`)
 </context>
 
@@ -128,7 +128,7 @@ Unless `--no-obsidian` or `--output` is specified, save to Obsidian vault:
 if [[ -n "${OUTPUT_FLAG}" ]]; then
   VAULT_BASE="${OUTPUT_FLAG}"
 elif [[ -n "${OBSIDIAN_VAULT}" ]]; then
-  VAULT_BASE="${OBSIDIAN_VAULT}/raw/Research"
+  VAULT_BASE="${OBSIDIAN_VAULT}/Research"
 else
   VAULT_BASE="$(pwd)/research-output"
 fi
@@ -635,76 +635,6 @@ Full report: ${OUTPUT_DIR}/REPORT.md
 
 </process>
 
-<step name="wiki_ingest">
-## Step 7: Ingest into Wiki (optional)
-
-After delivering the report, ingest it into the wiki. Only runs if `$OBSIDIAN_VAULT` is set and `{WIKI_BASE}/CLAUDE.md` exists. Skip this step if using `--no-obsidian` or if `$OBSIDIAN_VAULT` is not configured.
-
-**Wiki base:** `$OBSIDIAN_VAULT`
-
-### 7a. Read context
-
-Read these files to orient before writing wiki pages:
-- `{WIKI_BASE}/CLAUDE.md` — conventions and rules
-- `{WIKI_BASE}/index.md` — existing pages (to avoid duplicates and find cross-link targets)
-
-### 7b. Read the report
-
-Read `${OUTPUT_DIR}/REPORT.md` fully. Optionally skim 1-2 findings files if the report references something you need more detail on.
-
-### 7c. Write wiki pages
-
-Following the conventions in CLAUDE.md, create:
-
-**1. Topic page** → `{WIKI_BASE}/wiki/topics/YYYY-MM-DD-[slug].md`
-- Use today's date and a kebab-case slug derived from the research topic
-- Include: one-line thesis, key findings as sections, cross-links to entities and concepts, Sources section pointing to the raw files
-- Frontmatter: title, type: topic, tags, sources: 1, updated: today
-
-**2. Entity pages** → `{WIKI_BASE}/wiki/entities/[name].md`
-- For each significant company, product, or person central to the research
-- Only create if not already in index.md; if it exists, update it by appending new information
-- Link back to the new topic page
-
-**3. Concept pages** → `{WIKI_BASE}/wiki/concepts/[concept].md`
-- For each significant framework, pattern, or mental model introduced
-- Only create if not already in index.md; if it exists, update it
-
-**Cross-linking rules:**
-- Every new page must link to at least one existing wiki page
-- Use `[[PageName]]` wikilink syntax throughout
-- Scan existing pages from index.md and add cross-links where the topic is relevant
-
-### 7d. Update index.md
-
-Add all new pages to the appropriate table in `{WIKI_BASE}/index.md`:
-- Topics, Entities, or Concepts table
-- Mark the raw source as **Ingested** in the Raw Source Inventory table
-- Update the header count: `_Last updated: YYYY-MM-DD — N wiki pages, N sources ingested_`
-
-### 7e. Append to log.md
-
-Append to `{WIKI_BASE}/log.md` (prepend before the first existing `##` entry):
-
-```
-## [YYYY-MM-DD] ingest | [Research Topic]
-
-[2-3 sentences: what the research covered and what wiki pages were created/updated]
-
-Pages touched: [[page1]], [[page2]], ...
-```
-
-### 7f. Confirm to user
-
-```
-Wiki updated!
-
-New pages: [list of created pages]
-Updated pages: [list of updated pages]
-Index: updated | Log: appended
-```
-
-</step>
 
 <error_handling>
 

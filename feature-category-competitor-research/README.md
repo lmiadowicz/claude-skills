@@ -60,4 +60,4 @@ No external CLI tools required. Uses only WebSearch and WebFetch.
 - Research agents use Haiku for data collection, Sonnet for synthesis (preserves quota)
 - Diff mode: re-running on existing output appends new findings under "New Since Last Research"
 - YouTube: extracts intelligence from search result titles/descriptions only — never fetches watch pages
-- If `$OBSIDIAN_VAULT` is set and contains a `CLAUDE.md`, the wiki index and log are updated automatically
+- Output goes directly to `$OBSIDIAN_VAULT/Competitors/` — no wiki index or log steps

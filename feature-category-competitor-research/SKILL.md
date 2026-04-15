@@ -53,7 +53,7 @@ User input: $ARGUMENTS
 
 **Output path resolution (in order of precedence):**
 1. `--output <path>` flag
-2. `$OBSIDIAN_VAULT/wiki/competitors/` environment variable
+2. `$OBSIDIAN_VAULT/Competitors/` environment variable
 3. `./competitors-output/` (current directory fallback)
 
 **Output locations (within output directory):**
@@ -86,7 +86,7 @@ Resolve output directory:
 if [[ -n "${OUTPUT_FLAG}" ]]; then
   COMPETITORS_DIR="${OUTPUT_FLAG}"
 elif [[ -n "${OBSIDIAN_VAULT}" ]]; then
-  COMPETITORS_DIR="${OBSIDIAN_VAULT}/wiki/competitors"
+  COMPETITORS_DIR="${OBSIDIAN_VAULT}/Competitors"
 else
   COMPETITORS_DIR="$(pwd)/competitors-output"
 fi
@@ -844,20 +844,9 @@ CRITICAL:
 </step>
 
 <step name="obsidian_update">
-## Step 8: Update Wiki Index (optional)
+## Step 8: Done
 
-Only run this step if `$OBSIDIAN_VAULT` is set and `{COMPETITORS_DIR}/../../CLAUDE.md` exists.
-
-Read `{WIKI_BASE}/CLAUDE.md` and `{WIKI_BASE}/index.md` for conventions.
-
-Add/update competitor pages in the index. Prepend to `{WIKI_BASE}/log.md`:
-```
-## {TODAY} research | Enterprise Competitive Research — {MY_PRODUCT}
-
-{N} competitors researched ({SINCE_DATE}→{TODAY}). Categories: {CATEGORIES}. OST built with {N} opportunities.
-
-Pages touched: {list all pages}
-```
+All competitor files and synthesis saved to `{COMPETITORS_DIR}`. No additional index steps needed.
 </step>
 
 <step name="deliver">

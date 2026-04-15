@@ -6,7 +6,7 @@ Fetch meeting notes from [Granola](https://granola.so) and save them as structur
 
 1. Fetches meetings from Granola (summaries, notes, participants)
 2. Classifies each meeting as Interview, Work, or Discovery
-3. Saves to `{VAULT}/raw/Meetings/{Category}/YYYY-MM-DD {Title}.md`
+3. Saves to `{VAULT}/Meetings/{Category}/YYYY-MM-DD {Title}.md`
 4. Optionally ingests interview meetings into a wiki
 
 ## Prerequisites

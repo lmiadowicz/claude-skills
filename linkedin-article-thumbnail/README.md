@@ -1,4 +1,4 @@
-# editorial-thumbnail
+# linkedin-article-thumbnail
 
 Generate clean editorial-style SVG graphics for articles, LinkedIn posts, and diagrams. Think Bloomberg Businessweek covers, not stock photo libraries.
 

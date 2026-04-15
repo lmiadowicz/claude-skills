@@ -28,7 +28,7 @@ No external tools required.
 | `<topic>` | The research topic or question | Required |
 | `--angles N` | Override auto-detected angle count (max 12) | auto |
 | `--depth shallow\|normal\|deep` | Research depth per agent | auto |
-| `--output <path>` | Output directory | `$OBSIDIAN_VAULT/raw/Research` or `./research-output` |
+| `--output <path>` | Output directory | `$OBSIDIAN_VAULT/Research` or `./research-output` |
 | `--no-obsidian` | Skip Obsidian, save to `./research-output` | off |
 | `--fast` | Quick mode: 2 agents, shallow depth | off |
 
@@ -55,7 +55,7 @@ Detects input language automatically. Polish input → Polish output with correc
 
 ## Wiki ingest
 
-After delivering the report, the skill creates wiki pages (topic, entities, concepts) if `$OBSIDIAN_VAULT` is set and `{VAULT}/CLAUDE.md` exists. Skipped automatically with `--no-obsidian`.
+The report is saved as `REPORT.md` inside a dated folder in your output directory. Findings are kept in a `findings/` subfolder. No wiki ingest — files are saved directly to the output path.
 
 ## Complexity scoring
 

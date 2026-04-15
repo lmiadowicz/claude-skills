@@ -45,7 +45,7 @@ Each note includes:
 
 ## Wiki ingest
 
-After saving, the skill creates wiki pages (topic, entity, concept) if `$OBSIDIAN_VAULT` is set and `{VAULT}/CLAUDE.md` exists. Pass `--no-ingest` to skip.
+Transcripts are saved directly to the output directory. No wiki ingest — the `--no-ingest` flag is a no-op in this version.
 
 ## Examples
 

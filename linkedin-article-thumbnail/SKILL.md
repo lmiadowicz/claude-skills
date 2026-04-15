@@ -1,5 +1,5 @@
 ---
-name: editorial-thumbnail
+name: linkedin-article-thumbnail
 description: >
   Generate clean editorial-style graphics in SVG. Use this skill whenever the user wants a
   cover image, article graphic, LinkedIn post visual, thumbnail, header image, LinkedIn

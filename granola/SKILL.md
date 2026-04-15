@@ -14,14 +14,14 @@ allowed-tools:
 ---
 
 <objective>
-Fetch meeting notes from Granola and save them as structured markdown files in the LuMI Knowledge Base vault under raw/Meetings/, categorized by type. Optionally ingest into the wiki.
+Fetch meeting notes from Granola and save them as structured Markdown files in your Obsidian vault under Meetings/, categorized by type.
 </objective>
 
 <context>
 User input: $ARGUMENTS
 
 **Vault base:** `$OBSIDIAN_VAULT` environment variable (or `./meetings-output` if not set)
-**Meetings base:** `{VAULT}/raw/Meetings/`
+**Meetings base:** `{VAULT}/Meetings/`
 
 **Subfolders:**
 - `Interviews/` — job interviews, candidate interviews, SME interviews
@@ -117,40 +117,20 @@ Sanitize title for filename: remove special chars, truncate to 80 chars.
 Granola sync complete!
 
 Saved: N meetings
-  Interviews: N files → raw/Meetings/Interviews/
-  Work: N files → raw/Meetings/Work/  
-  Discovery: N files → raw/Meetings/Discovery/
+  Interviews: N files → Meetings/Interviews/
+  Work: N files → Meetings/Work/
+  Discovery: N files → Meetings/Discovery/
 Skipped: N (empty or already saved)
 ```
 
-## Step 7: Ingest into wiki (unless --no-ingest)
+## Step 7: Done
 
-For **Interview** category files only, run wiki ingest:
-
-**Wiki base:** `$OBSIDIAN_VAULT` (skip this step if `$OBSIDIAN_VAULT` is not set)
-
-Read:
-- `{VAULT}/CLAUDE.md`
-- `{VAULT}/index.md`
-
-For each interview file:
-1. Create or update `wiki/topics/YYYY-MM-DD-interview-{slug}.md` with:
-   - Who was interviewed / who conducted
-   - Key topics discussed
-   - Strengths and weaknesses observed
-   - Open questions
-   - Cross-links to relevant entity/concept pages
-2. Update index.md
-3. Append to log.md
-
-For Work and Discovery meetings: skip wiki ingest (too noisy). User can manually request ingest on specific meetings.
+All files saved. No additional ingest steps.
 
 </process>
 
 <principles>
 1. Never fetch transcript unless user explicitly asks — summaries and notes are enough
 2. Skip empty meetings (no summary, no notes)
-3. Interviews always get wiki pages; work/discovery meetings do not (by default)
-4. Respect the --no-ingest flag
-5. Files already saved are not overwritten unless content has changed
+3. Files already saved are not overwritten unless content has changed
 </principles>
